@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Welcome to Twitter #{@user.username}"
+      flash[:success] = "Welcome to Twitter #{@user.Username}"
       redirect_to root_path
     else
       render 'new'
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:fullname, :username)
+    params.require(:user).permit(:Fullname, :Username)
   end
   
 end
