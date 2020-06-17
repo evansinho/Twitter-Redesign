@@ -1,0 +1,34 @@
+<div class="side-nav">
+  <div class="current-user">
+    picture
+    <p><%= current_user.Fullname.upcase %></p>
+  </div>
+  <div class="follow">
+    <div class="following-stat-side">
+      <div class="stats">
+        <p class="stat-no"><%= current_user.followed.count %></p>
+        <p class="stat-name">Following</p>
+      </div>
+    </div>
+    <div class="followed-stat-side">
+      <div class="stats">
+        <p class="stat-no"><%= current_user.followers.count %></p>
+        <p class="stat-name">Followers</p>
+      </div>
+    </div>
+  </div>
+  <div class="side-links">
+    <div class="home-link">
+      <i class="fas fa-home"></i>
+      <%= link_to 'HOME', root_path %>
+    </div>
+    <div class="profile-link">
+      <i class="fas fa-user"></i>
+      <%= link_to 'PROFILE', user_path(current_user.id) %>
+    </div>
+    <div class="logout-link">
+      <i class="fas fa-power-off"></i>
+      <%= link_to 'LOGOUT', logout_path, method: :delete %>
+    </div>
+  </div>
+</div>
