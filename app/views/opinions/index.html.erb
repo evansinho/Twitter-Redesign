@@ -1,0 +1,49 @@
+<div class="main-content">
+ <%= render 'side_nav' %>
+ <main>
+  <%= render 'navigation_bar' %>
+  <div class="main-body>
+    <div class="tweets">
+      <div class="tweets-heading">
+        <p>Tweets</p>
+      </div>
+      <div class="tweet-form">
+        <div class="new-tweet">
+          <p>TWEET SOMETHING</p>
+          <%= form_for @opinion, url: new_opinion_path  do |f| %>
+            <%= f.text_area :Text, placeholder: "Compose new tweet" %>
+            <% if @opinion.errors[:Text][0]  %>
+              <p class="error">* <%= @opinion.errors[:Text][0] %></p>
+            <% end %>
+            <%= f.submit "Tweet" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="tweet-body">
+        <p>NEW TWEETS</p>
+        <% @opinions.each do |opinion| %>
+          <div class="tweet-avatar">
+
+          </div>
+          <div class="tweet-content">
+            <h4><%= opinion.Author.Fullname %></h4>
+            <p><%= opinion.Text %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <aside class="who-follow">
+      <div class="follow-header">
+        <p>WHO TO FOLLOW</p>
+      </div>
+      <div class="find-friends">
+        <% @users.each do |user| %>
+          <%= link_to user_path(user), class: 'user' do %>
+            <h6><%= user.Fullname %></h6>
+          <% end %>
+        <% end %>
+      </div>
+    </aside>
+  </div> 
+ </main>
+</div>
