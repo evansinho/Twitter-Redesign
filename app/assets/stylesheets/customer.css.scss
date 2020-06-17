@@ -1,2 +1,54 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
+
+
+$primary-color-dark: #689f38;
+$primary-color: #1DA1F2;
+$primary-color-light: #dcedc8;
+$primary-color-text: #212121;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.login-cover {
+  margin-top: 2%;
+  i {
+    color: $primary-color;
+  }
+  h3 {
+    font-weight: bolder;
+  }
+}
+
+.login-form {
+  padding-top: 1rem;
+}
+
+.username-label {
+  background-color: #F5F8FA;
+  width: 40%;
+  padding-right: 35%;
+  margin-bottom: 0;
+  color: #7C7786;
+}
+
+.username-input {
+  width: 40%;
+  border: none;
+  border-bottom: 1px solid $primary-color;
+  background-color: #E8F0FE;
+  height: 5rem;
+  margin-bottom: 1.5rem;
+}
+
+.login-btn {
+  width: 40%;
+  border-radius: 0.5rem;
+  background-color: $primary-color;
+  padding: 1.5rem;
+  font-weight: bolder;
+  margin-bottom: 0.5rem;
+}
