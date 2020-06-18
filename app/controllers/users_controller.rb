@@ -13,6 +13,12 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+
+  def show
+    @user = User.find(params[:id])
+    @opinions = @user.opinions.order("created_at DESC")
+    @followers = User.user_followers(params[:id], current_user.id)
+  end
   
   private
   

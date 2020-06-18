@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   post '/create_opinion', to: 'opinions#create', as: :new_opinion
+  get '/follow/:followed_id', to: 'friendships#create', as: :follow
+  delete '/:followed_id', to: 'friendships#destroy', as: :unfollow
   resources :users, except: [:new]
 end

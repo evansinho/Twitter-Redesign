@@ -1,0 +1,77 @@
+<div class="main-content">
+ <%= render 'opinions/side_nav' %>
+ <main>
+  <%= render 'opinions/navigation_bar' %>
+  <div class="main-user-body">
+    <div class="user-tweet">
+      <div class="hero-img">
+        <img src="https://via.placeholder.com/150" alt="">
+      </div>
+      <div class="user-body">
+        <p class="user-body-header">ALL TWEETS</p>
+        <% @opinions.each do |opinion| %>
+          <div class="user-avatar">
+            <div class="picture">
+              <img src="https://via.placeholder.com/50" alt="">           
+            </div>
+          </div>
+          <div class="user-content">
+            <h4><%= opinion.Author.Fullname %></h4>
+            <span><%= opinion.Text %></span>
+          </div>
+          <div class="clear"></div>
+        <% end %>
+      </div>
+    </div>
+    <div  class="user-profile">
+     <div class="profile-container">
+        <div class="follow-icon">
+          <% unless current_user.id == @user.id %>
+              <% if current_user.followed.any? { |person| person.Followedid == @user.id }%>
+                <%= link_to unfollow_path(@user), method: :delete, class: "material-icons" do %>
+                  <i class="fas fa-plus-circle"></i>
+                <% end %>
+              <%else%>
+                <%= link_to follow_path(@user), class: "material-icons" do %>
+                  <i class="fas fa-minus-circle"></i>
+                <% end %>
+              <% end %>
+            <% end %>
+          <img src="https://via.placeholder.com/50" alt="">
+          <i class="fas fa-list"></i>
+        </div>
+        <div class="profile-details text-center">
+          <h5><%= @user.Fullname.upcase %></h5>
+          <h6>@<%= @user.Username %></h6>
+        </div> 
+      </div>
+      <div class="user-stat">
+        <div class="opinion-stat">
+          <div class="stats-1">
+            <p class="stat-no"><%= @opinions.count %></p>
+            <p class="stat-name">Tweets</p>
+          </div>
+        </div>
+        <div class="following-stat">
+          <div class="stats-1">
+            <p class="stat-no"><%= @user.followed.count %></p>
+            <p class="stat-name">Following</p>
+          </div>
+        </div>
+        <div class="followed-stat">
+          <div class="stats-3">
+            <p class="stat-no"><%= @user.followers.count %></p>
+            <p class="stat-name">Followers</p>
+          </div>
+        </div>
+      </div>
+      <div class="followers-section">
+        <div class="followers-header">
+          <p>FOLLOWED BY</p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+ </main>
+</div>
