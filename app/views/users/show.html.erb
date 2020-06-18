@@ -29,14 +29,14 @@
           <% unless current_user.id == @user.id %>
               <% if current_user.followed.any? { |person| person.Followedid == @user.id }%>
                 <%= link_to unfollow_path(@user), method: :delete, class: "material-icons" do %>
-                  <i class="fas fa-plus-circle"></i>
+                  <i class="fas fa-minus-circle"></i>
                 <% end %>
               <%else%>
                 <%= link_to follow_path(@user), class: "material-icons" do %>
-                  <i class="fas fa-minus-circle"></i>
+                  <i class="fas fa-plus-circle"></i>
                 <% end %>
               <% end %>
-            <% end %>
+          <% end %>
           <img src="https://via.placeholder.com/50" alt="">
           <i class="fas fa-list"></i>
         </div>
@@ -69,7 +69,25 @@
         <div class="followers-header">
           <p>FOLLOWED BY</p>
         </div>
-        
+        <div class="my-followers">
+            <% @followers.each do |follower| %>
+              <div class="follower-profile">
+                <div class="follower-avatar">
+                  <img src="https://via.placeholder.com/50" alt="">
+                  <h6><%= follower.Follower.Fullname %></h6>
+                </div>
+                <% if current_user.followed.any? { |person| person.Followedid == follower.Follower.id }%>
+                  <%= link_to unfollow_path(follower.Follower), method: :delete, class: "follow-icons" do %>
+                      <i class="fas fa-minus-circle"></i>
+                  <% end %>
+                <%else%>
+                  <%= link_to follow_path(follower.Follower), class: "follow-icons" do %>
+                    <i class="fas fa-plus-circle"></i>
+                  <% end %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
       </div>
     </div>
   </div>

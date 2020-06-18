@@ -7,8 +7,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      flash[:notice] = "Registered successfully please Login"
       redirect_to root_path
-      flash[:notice] = "Welcome to Twitter #{@user.Username}"
     else
       render 'new'
     end

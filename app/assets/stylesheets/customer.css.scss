@@ -346,5 +346,24 @@ aside {
     padding-top: 3rem;
     border-bottom: 1px solid #E2E3E5;
   }
+
+  .follower-profile {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  .follower-avatar {
+    display: flex;
+  }
+
+  .follower-avatar img {
+    margin-right: 1rem;
+  }
+
+  .follow-icons {
+    margin-right: 1rem;
+  }
   
  }
