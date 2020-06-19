@@ -186,6 +186,18 @@ main {
   }
 }
 
+.like {
+  display: flex;
+}
+
+.like p {
+  padding: 0rem 0 0 0.5rem;
+}
+
+.text-white {
+  color: grey;
+}
+
 .main-body {
   padding-left: 1rem;
   display: grid;
