@@ -1,7 +1,11 @@
 <div class="side-nav">
   <div class="current-user">
     <div class="picture">
-      <img src="https://via.placeholder.com/50" alt="">           
+      <% if current_user[:Photo].nil? %>
+        <%= gravatar_for current_user, size: 50 %>
+      <% else %>
+        <%= image_tag current_user.Photo.thumb.url %>
+      <% end %>           
     </div>
     <h6><%= current_user.Fullname.upcase %></h6>
   </div>
