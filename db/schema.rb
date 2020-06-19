@@ -10,11 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_154850) do
+ActiveRecord::Schema.define(version: 2020_06_19_122029) do
 
   create_table "followings", force: :cascade do |t|
     t.integer "Followerid"
     t.integer "Followedid"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "UserId"
+    t.integer "OpinionId"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -31,6 +38,8 @@ ActiveRecord::Schema.define(version: 2020_06_16_154850) do
     t.string "Username"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "Photo"
+    t.string "CoverImage"
     t.index ["Username"], name: "index_users_on_Username", unique: true
   end
 

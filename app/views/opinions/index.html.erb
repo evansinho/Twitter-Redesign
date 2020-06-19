@@ -9,8 +9,10 @@
         <p>TWEET SOMETHING</p>
         <%= form_for @opinion, url: new_opinion_path  do |f| %>
           <%= f.text_area :Text, class: "text-input", placeholder: "Compose new tweet" %>
-            <% if @opinion.errors[:Text][0]  %>
-              <p class="error">* <%= @opinion.errors[:Text][0] %></p>
+            <% if @opinion.errors.full_messages.any? %>
+              <p class="errors">
+                <%= "tweet could not be created. #{@opinion.errors.full_messages.join('. ')}" %>
+              </p>
             <% end %>
           <%= f.submit "Tweet", class: "text-btn" %>
         <% end %>
