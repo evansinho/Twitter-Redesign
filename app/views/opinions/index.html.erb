@@ -32,6 +32,20 @@
             <span><%= opinion.Text %></span>
           </div>
           <div class="clear"></div>
+          <span>
+            <% if opinion.likes.any? { |like| like.UserId == current_user.id }%>
+              <%= link_to unlike_path(opinion), method: :delete, class: 'user' do %>
+                <h6>unlike</h6>
+              <% end %>
+            <% else %>
+              <%= link_to like_path(opinion), class: 'user' do %>
+                <h6>like</h6>
+              <% end %>
+            <% end %>
+            <% if opinion.likes.any? %>
+              <p><%= "#{pluralize(opinion.likes.count, 'like')}" %></p>
+            <% end %>
+          </span>
         <% end %>
       </div>
     </div>
