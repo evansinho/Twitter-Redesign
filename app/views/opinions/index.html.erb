@@ -24,26 +24,26 @@
                 <%= gravatar_for opinion.Author, size: 50 %>
               <% else %>
                 <%= image_tag opinion.Author.Photo.thumb.url %>
-              <% end %>           
+              <% end %>
             </div>
           </div>
           <div class="tweet-content">
             <h4><%= opinion.Author.Fullname.upcase %></h4>
             <span><%= opinion.Text %></span>
-            <span class="like">
-              <% if opinion.likes.any? { |like| like.UserId == current_user.id }%>
-                <%= link_to unlike_path(opinion), method: :delete, class: 'user' do %>
-                  <i class="fas fa-heart text-danger"></i>
+              <span class="like">
+                <% if opinion.likes.any? { |like| like.UserId == current_user.id }%>
+                  <%= link_to unlike_path(opinion), method: :delete, class: 'user' do %>
+                    <i class="fas fa-heart text-danger"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to like_path(opinion), class: 'user' do %>
+                    <i class="fas fa-heart text-white"></i>
+                  <% end %>
                 <% end %>
-              <% else %>
-                <%= link_to like_path(opinion), class: 'user' do %>
-                  <i class="fas fa-heart text-white"></i>
+                <% if opinion.likes.any? %>
+                  <p><%= "#{pluralize(opinion.likes.count, 'like')}" %></p>
                 <% end %>
-              <% end %>
-              <% if opinion.likes.any? %>
-                <p><%= "#{pluralize(opinion.likes.count, 'like')}" %></p>
-              <% end %>
-          </span>
+            </span>
           </div>
           <div class="clear"></div>
         <% end %>
