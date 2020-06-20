@@ -10,7 +10,7 @@ RSpec.feature 'Following', type: :feature do
     fill_in 'Username', with: 'messi'
     click_button 'Log In'
     click_on 'Ronaldo christiano'
-    first(:css, ".font-follow-icon").click
+    first(:css, '.font-follow-icon').click
     expect(page).to have_content('HOME')
   end
 
@@ -19,8 +19,8 @@ RSpec.feature 'Following', type: :feature do
     fill_in 'Username', with: 'messi'
     click_button 'Log In'
     click_on 'Ronaldo christiano'
-    first(:css, ".font-follow-icon").click
-    first(:css, ".font-unfollow-icon").click
+    first(:css, '.font-follow-icon').click
+    first(:css, '.font-unfollow-icon').click
     expect(page).to have_content('HOME')
   end
 end

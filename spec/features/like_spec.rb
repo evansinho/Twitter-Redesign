@@ -13,7 +13,7 @@ RSpec.feature 'Like', type: :feature do
     click_button 'Log In'
     fill_in 'opinion[Text]', with: 'This is an opinion'
     click_button 'Tweet'
-    first(:css, ".user-2").click
+    first(:css, '.user-2').click
     expect(page).to have_content('1 like')
   end
 
@@ -23,8 +23,8 @@ RSpec.feature 'Like', type: :feature do
     click_button 'Log In'
     fill_in 'opinion[Text]', with: 'This is an opinion'
     click_button 'Tweet'
-    first(:css, ".user-2").click
-    first(:css, ".user-1").click
+    first(:css, '.user-2').click
+    first(:css, '.user-1').click
     expect(page).to_not have_content('1 like')
   end
 end

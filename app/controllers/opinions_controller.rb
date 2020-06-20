@@ -3,19 +3,19 @@ class OpinionsController < ApplicationController
 
   def index
     @opinion = Opinion.new
-    @opinions = Opinion.all.order("created_at DESC")
-    @users = User.all_users(current_user.id).order("created_at DESC")
+    @opinions = Opinion.all.order('created_at DESC')
+    @users = User.all_users(current_user.id).order('created_at DESC')
   end
-  
+
   def create
     @opinion = Opinion.new(opinion_params)
     @opinion.AuthorId = current_user.id
 
     if @opinion.save
-      flash[:notice] = "Tweet created"
+      flash[:notice] = 'Tweet created'
       redirect_to root_path
     else
-      flash[:alert] = "something went wrong"
+      flash[:alert] = 'something went wrong'
       render 'index'
     end
   end

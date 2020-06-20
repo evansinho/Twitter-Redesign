@@ -48,7 +48,7 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
-  Shoulda::Matchers.configure do |config|
+  Shoulda::Matchers.configure do |config| # rubocop:todo Lint/ShadowingOuterLocalVariable
     config.integrate do |with|
       with.test_framework :rspec
       with.library :rails

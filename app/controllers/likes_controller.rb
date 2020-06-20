@@ -7,6 +7,6 @@ class LikesController < ApplicationController
   def destroy
     @like = Like.find_user_like(current_user.id, params[:opinion_id])
     @like.destroy
-      redirect_to root_path
+    redirect_to root_path
   end
 end
