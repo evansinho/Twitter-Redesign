@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :followers, foreign_key: 'Followedid', class_name: 'Following'
   has_many :likes, foreign_key: 'UserId', class_name: 'Like'
   before_save { self.Username = self.Username.downcase }
-  validates :Username, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 3 }
+  validates :Username, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 50 }
   validates :Fullname, presence: true, length: { minimum: 3, maximum: 100 }
   mount_uploader :Photo, ImageUploader
   mount_uploader :CoverImage, ImageUploader

@@ -37,7 +37,7 @@
               <% end %>
             <% end %>
             <% if opinion.likes.any? %>
-              <p><%= "#{pluralize(opinion.likes.count, 'like')}" %></p>
+              <p><%= "#{pluralize(opinion.likes.size, 'like')}" %></p>
             <% end %>
         </span>
             <div class="clear"></div>
@@ -76,19 +76,19 @@
       <div class="user-stat">
         <div class="opinion-stat">
           <div class="stats-1">
-            <p class="stat-no"><%= @opinions.count %></p>
+            <p class="stat-no"><%= @opinions.size %></p>
             <p class="stat-name">Tweets</p>
           </div>
         </div>
         <div class="following-stat">
           <div class="stats-1">
-            <p class="stat-no"><%= @user.followed.count %></p>
+            <p class="stat-no"><%= @user.followed.size %></p>
             <p class="stat-name">Following</p>
           </div>
         </div>
         <div class="followed-stat">
           <div class="stats-3">
-            <p class="stat-no"><%= @user.followers.count %></p>
+            <p class="stat-no"><%= @user.followers.size %></p>
             <p class="stat-name">Followers</p>
           </div>
         </div>

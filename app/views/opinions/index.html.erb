@@ -31,7 +31,7 @@
           </div>
           <div class="tweet-content">
             <h4><%= opinion.Author.Fullname.upcase %></h4>
-            <span><%= opinion.Text %></span>
+            <span><%= sanitize opinion.Text %></span>
               <span class="like">
                 <% if opinion.likes.any? { |like| like.UserId == current_user.id }%>
                   <%= link_to unlike_path(opinion), method: :delete, class: 'user-1' do %>
@@ -43,7 +43,7 @@
                   <% end %>
                 <% end %>
                 <% if opinion.likes.any? %>
-                  <p><%= "#{pluralize(opinion.likes.count, 'like')}" %></p>
+                  <p><%= "#{pluralize(opinion.likes.size, 'like')}" %></p>
                 <% end %>
             </span>
           </div>

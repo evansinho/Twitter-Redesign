@@ -23,11 +23,20 @@ li {
   list-style: none;
 }
 
+.hero-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
 .hero-img img {
+  display: block;
   width: 100%;
   height: 35rem;
+  
 }
-// Login/signup section
+
 
 .login-cover {
   margin-top: 2%;

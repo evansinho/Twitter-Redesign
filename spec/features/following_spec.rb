@@ -11,7 +11,7 @@ RSpec.feature 'Following', type: :feature do
     click_button 'Log In'
     click_on 'Ronaldo christiano'
     first(:css, '.font-follow-icon').click
-    expect(page).to have_content('HOME')
+    expect(page).to have_css('.font-unfollow-icon')
   end
 
   it 'Should be able to unfollow a user' do
@@ -21,6 +21,6 @@ RSpec.feature 'Following', type: :feature do
     click_on 'Ronaldo christiano'
     first(:css, '.font-follow-icon').click
     first(:css, '.font-unfollow-icon').click
-    expect(page).to have_content('HOME')
+    expect(page).to have_css('.font-follow-icon')
   end
 end
