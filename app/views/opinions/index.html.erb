@@ -1,0 +1,77 @@
+<div class="main-content">
+ <%= render 'side_nav' %>
+ <main>
+  <%= render 'navigation_bar' %>
+  <div class="main-body">
+    <div class="tweets">
+      <p class="tweets-heading">TWEETS</p>
+      <div class="tweet-form">
+        <p>TWEET SOMETHING</p>
+        <% if @opinion.errors.full_messages.any? %>
+          <% @opinion.errors.full_messages.each do |message| %>
+              <p class="text-danger"><%= message %></p>
+          <% end %>
+        <% end %>
+        <%= form_for @opinion, url: new_opinion_path  do |f| %>
+          <%= f.text_area :Text, class: "text-input", placeholder: "Compose new tweet" %>
+          <%= f.submit "Tweet", class: "text-btn" %>
+        <% end %>
+      </div>
+      <div class="tweet-body">
+        <p class="tweet-body-header">NEW TWEETS</p>
+        <% @opinions.each do |opinion| %>
+          <div class="tweet-avatar">
+            <div class="picture">
+              <% if opinion.Author[:Photo].nil? %>
+                <%= gravatar_for opinion.Author, size: 50 %>
+              <% else %>
+                <%= image_tag opinion.Author.Photo.thumb.url %>
+              <% end %>
+            </div>
+          </div>
+          <div class="tweet-content">
+            <h4><%= opinion.Author.Fullname.upcase %></h4>
+            <span><%= sanitize opinion.Text %></span>
+              <span class="like">
+                <% if opinion.likes.any? { |like| like.UserId == current_user.id }%>
+                  <%= link_to unlike_path(opinion), method: :delete, class: 'user-1' do %>
+                    <i class="fas fa-heart text-danger"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to like_path(opinion), class: 'user-2' do %>
+                    <i class="fas fa-heart text-white"></i>
+                  <% end %>
+                <% end %>
+                <% if opinion.likes.any? %>
+                  <p><%= "#{pluralize(opinion.likes.size, 'like')}" %></p>
+                <% end %>
+            </span>
+          </div>
+          <div class="clear"></div>
+        <% end %>
+      </div>
+    </div>
+    <aside class="who-follow">
+      <div class="follow-header">
+        <p>WHO TO FOLLOW</p>
+      </div>
+      <div class="find-friends">
+        <% @users.each do |user| %>
+          <div class="who-follow-profile">
+            <div class="picture">
+              <%= link_to user_path(user), class: 'user' do %>
+                <% unless user[:Photo].nil? %>
+                  <%= image_tag user.Photo.thumb.url, class: 'photo' %>
+                <% else %>
+                  <%= gravatar_for user, size: 50 %>
+                <% end %>
+                <h6><%= user.Fullname %></h6>
+              <% end %>
+            </div>  
+          </div>
+        <% end %>
+      </div>
+    </aside>
+  </div> 
+ </main>
+</div>
