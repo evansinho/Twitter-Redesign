@@ -30,6 +30,10 @@
 - Ruby on Rails v6.0.3
 - Gems used for testing: Capybara, Rspec-Rails, Shoulda-matchers and FactoryBot
 
+## video
+
+(https://www.loom.com/share/bd944ec25e734429ae4b2a812df7e543)
+
 ## Live Demo
 
 [Heroku App Link](https://shrouded-river-43787.herokuapp.com/)
