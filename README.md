@@ -24,6 +24,11 @@
     4. List of people who follow this user.
 7. At the end extend your MVP app with one simple feature of your choice.
 
+## Future features
+
+1. Add chat functionalities to the application.
+2. Ability of users to comment and make other reactions to a post aside liking a post.
+
 ## Built With
 
 - Ruby v2.6.5
